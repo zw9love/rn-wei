@@ -585,14 +585,14 @@ export default React.createClass({
     componentDidMount(){
         //设定标识符为false
         this.lock = false;
-        fetch('http://www.z1995.com/data.json').then((response) => response.json())
-        .then((responseJson) => {
-            // console.log(responseJson)
-            return responseJson.movies;
-        })
-        .catch((error) => {
-            console.error(error);
-        });
+        // fetch('http://www.z1995.com/data.json').then((response) => response.json())
+        // .then((responseJson) => {
+        //     // console.log(responseJson)
+        //     return responseJson.movies;
+        // })
+        // .catch((error) => {
+        //     console.error(error);
+        // });
     },
     changeIndex(e){
         //水平的偏移量
