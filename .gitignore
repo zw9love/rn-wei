@@ -4,6 +4,7 @@
 
 # Xcode
 #
+my-release-key.keystore
 build/
 *.pbxuser
 !default.pbxuser
