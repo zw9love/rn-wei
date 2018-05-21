@@ -1,5 +1,5 @@
 /**
- * Created by Administrator on 2017/3/31.
+ * Created by zengwei on 2017/3/31.
  */
 import React  from 'react';
 import {
@@ -38,7 +38,7 @@ export default React.createClass({
                     </TouchableOpacity>
                 </View>
                 <View style={styles.myBottom}>
-                    <Text style={styles.myBottomTxt1}>看到威哥一次打一次</Text>
+                    <Text style={styles.myBottomTxt1}>看到威哥就么么哒</Text>
                     <Text style={styles.myBottomTxt2}>heshetrends.com</Text>
                 </View>
             </View>

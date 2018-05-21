@@ -1,7 +1,7 @@
 /**
- * Created by Administrator on 2017/4/1.
+ * Created by zengwei on 2017/4/1.
  */
-import React  from 'react';
+import React from 'react';
 import {
     StyleSheet,
     Text,
@@ -20,7 +20,7 @@ let sortData = require('../data/AddressSort.json');
 import Title from '../components/Title'
 
 export default React.createClass({
-    getInitialState(){
+    getInitialState() {
         let getSectionData = function (dataBlob, sectionID) {
             return dataBlob[sectionID];
         }
@@ -37,11 +37,11 @@ export default React.createClass({
             }),
         }
     },
-    render(){
-        return(
+    render() {
+        return (
             <View style={styles.container}>
                 {/*头部*/}
-                <Title navigator={this.props.navigator} data={{name:'威哥电商'}}/>
+                <Title navigator={this.props.navigator} data={{name: '威哥电商'}}/>
                 {/*地址块*/}
                 <ListView
                     dataSource={this.state.dataSource}
@@ -52,19 +52,19 @@ export default React.createClass({
             </View>
         )
     },
-    componentDidMount(){
+    componentDidMount() {
         //优化一下，不用每次进来都循环
-        if(!this.props.tempData) {
+        if (!this.props.tempData) {
             for (var i in sortData) {
                 for (var j in changeData) {
-                    if (changeData[j]['pinyin'].charAt(0) == sortData[i]['title']) {
+                    if (changeData[j]['pinyin'].charAt(0) === sortData[i]['title']) {
                         sortData[i]['city'].push(changeData.splice(j, 1)[0]);
                     }
                 }
             }
             this.props.setData(sortData);
         }
-        let data = this.props.tempData||sortData;
+        let data = this.props.tempData || sortData;
         //console.log(data)
         let dataBlob = {}, sectionIDs = [], rowIDs = [], arr = [];
         for (let i = 0; i < data.length; i++) {
@@ -81,70 +81,73 @@ export default React.createClass({
             dataSource: this.state.dataSource.cloneWithRowsAndSections(dataBlob, sectionIDs, rowIDs)
         })
     },
-    renderRow(data){
-        return(
-            <TouchableOpacity activeOpacity={0.3} onPress={()=>{this.setCity(data.name)}}>
+    renderRow(data) {
+        return (
+            <TouchableOpacity activeOpacity={0.3} onPress={() => {
+                this.setCity(data.name)
+            }}>
                 <View style={styles.rowStyle}>
-                    <Image source={data.icon} style={styles.imageStyle}></Image>
+                    {/*<Image source={data.icon} style={styles.imageStyle}/>*/}
+                    <Image source={require('../assets/img/wei.png')} style={styles.imageStyle}/>
                     <Text style={styles.textStyle}>{data.name}</Text>
                 </View>
             </TouchableOpacity>
         )
     },
-    renderSectionHeader(data,id){
-        return(
+    renderSectionHeader(data, id) {
+        return (
             <TouchableOpacity style={styles.sectionStyle}>
-                <Text style={{color:'#333',fontSize:20}}>{data}</Text>
+                <Text style={{color: '#333', fontSize: 20}}>{data}</Text>
             </TouchableOpacity>
         )
     },
-    setCity(name){
+    setCity(name) {
         this.props.setCity(name);
         this.props.navigator.pop();
     }
 })
 
 const styles = StyleSheet.create({
-    container:{
+    container: {
         // flex:1,
-        backgroundColor:'#fff'
+        backgroundColor: '#fff'
     },
-    header:{
-        flexDirection:'row',
-        height:60,
+    header: {
+        flexDirection: 'row',
+        height: 60,
         alignItems: 'center',
         backgroundColor: '#FF6100',
     },
-    headerBackWrap:{
-        paddingLeft:15,
-        paddingRight:15,
+    headerBackWrap: {
+        paddingLeft: 15,
+        paddingRight: 15,
     },
-    backIcon:{
-        width:7,
-        height:13
+    backIcon: {
+        width: 7,
+        height: 13
     },
-    imageStyle:{
-        width:80,
-        height:80,
-        borderRadius:40,
+    imageStyle: {
+        width: 40,
+        height: 40,
+        borderRadius: 20,
         // marginLeft:10,
     },
-    sectionStyle:{
-        height:40,
+    sectionStyle: {
+        height: 40,
         justifyContent: 'center',
-        paddingLeft:10,
-        backgroundColor:'#e8e8e8'
+        paddingLeft: 10,
+        backgroundColor: '#e8e8e8'
     },
-    rowStyle:{
-        flexDirection:'row',
+    rowStyle: {
+        flexDirection: 'row',
         alignItems: 'center',
-        borderBottomColor:'#e8e8e8',
-        borderBottomWidth:1,
-        padding:10
+        borderBottomColor: '#e8e8e8',
+        borderBottomWidth: 1,
+        padding: 10
     },
-    textStyle:{
-        marginLeft:10,
-        color:'#333',
-        fontSize:16
+    textStyle: {
+        marginLeft: 10,
+        color: '#333',
+        fontSize: 16
     }
 })

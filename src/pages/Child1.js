@@ -1,5 +1,5 @@
 /**
- * Created by Administrator on 2017/3/23.
+ * Created by zengwei on 2017/3/23.
  */
 import React  from 'react';
 import {
@@ -12,7 +12,8 @@ import {
     TextInput,
     RefreshControl,
     StatusBar,
-    Dimensions
+    Dimensions,
+    Platform
 } from 'react-native';
 import TimerMixin from 'react-timer-mixin'
 
@@ -28,7 +29,7 @@ import Address from './Address'
 import Message from './Message'
 import WebPage from './WebPage'
 import ClassicShow from './ClassicShow'
-
+import style from '../assets/style/common'
 let {width, height} = Dimensions.get('window');
 
 export default React.createClass({
@@ -46,7 +47,7 @@ export default React.createClass({
                     showHideTransition={'fade'}
                     //networkActivityIndicatorVisible={true}
                 />
-                <View style={styles.shadow}></View>
+                <View style={styles.shadow} />
                 {/*头部*/}
                 <View style={styles.header}>
                     {/*<Text>Height: {StatusBar.currentHeight}</Text>*/}
@@ -376,7 +377,7 @@ export default React.createClass({
         for (let i = 0; i < 2; i++) {
             specialStyle = this.state.index == i ? {backgroundColor: '#FF6100'} : {backgroundColor: '#ccc'};
             arr.push(
-                <View key={i} style={[styles.circel,specialStyle]}></View>
+                <View key={i} style={[styles.circel,specialStyle]}/>
             )
         }
         return arr;
@@ -413,7 +414,7 @@ export default React.createClass({
                             return (
                                 <TouchableOpacity key={index} style={styles.carouselCellWrap}
                                                   onPress={()=>{self.jumpClassicShow(msg.name)}}>
-                                    <Image source={msg.src} style={styles.carouselCellImg}></Image>
+                                    <Image source={msg.src} style={styles.carouselCellImg}/>
                                     <Text style={styles.carouselCellTxt}>{msg.name}</Text>
                                 </TouchableOpacity>
                             )
@@ -593,6 +594,7 @@ export default React.createClass({
         // .catch((error) => {
         //     console.error(error);
         // });
+        // console.log("ifIphoneX = " + ifIphoneX())
     },
     changeIndex(e){
         //水平的偏移量
@@ -603,7 +605,7 @@ export default React.createClass({
         this.setState({index: currentIndex})
     }
 })
-
+let statusHeight = StatusBar.currentHeight ? StatusBar.currentHeight : 0
 const styles = StyleSheet.create({
     container: {
         // flex: 1,
@@ -611,6 +613,7 @@ const styles = StyleSheet.create({
         // justifyContent: 'center',
         // alignItems: 'center',
         backgroundColor: '#e8e8e8',
+        // paddingTop: 15
     },
     shadow: {
         backgroundColor: '#FF6100',
@@ -618,10 +621,11 @@ const styles = StyleSheet.create({
     },
     header: {
         flexDirection: 'row',
-        height: 60,
+        height: 60 + style.marginTop,
         alignItems: 'center',
         justifyContent: 'space-around',
         backgroundColor: '#FF6100',
+        paddingTop: style.marginTop
     },
     headerTxt: {
         fontSize: 14,
@@ -739,7 +743,7 @@ const styles = StyleSheet.create({
         // backgroundColor:'yellow',
     },
     scrollView: {
-        marginBottom: 60 + StatusBar.currentHeight,
+        marginBottom: 60 + statusHeight + style.marginTop,
         // alignItems: 'center',
         // backgroundColor:'red'
     },

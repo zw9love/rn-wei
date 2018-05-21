@@ -1,5 +1,5 @@
 /**
- * Created by Administrator on 2017/3/27.
+ * Created by zengwei on 2017/3/27.
  */
 import React  from 'react';
 import {
@@ -19,7 +19,7 @@ export default React.createClass({
             <TouchableOpacity>
                 <View style={styles.container}>
                     <View style={styles.imgWrap}>
-                        <Image source={this.props.data.url} style={styles.imgStyle}></Image>
+                        <Image source={this.props.data.url} style={styles.imgStyle}/>
                         <Text style={styles.infoStyle}>{this.props.data.info}</Text>
                     </View>
                     <Text style={styles.nameStyle}>{this.props.data.name}</Text>

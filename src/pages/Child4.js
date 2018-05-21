@@ -1,5 +1,5 @@
 /**
- * Created by Administrator on 2017/3/23.
+ * Created by zengwei on 2017/3/23.
  */
 import React  from 'react';
 import {
@@ -21,6 +21,7 @@ import PayHelp from './PayHelp'
 import Questionnaire from './Questionnaire'
 import Network from './Network'
 import Message from './Message'
+import style from "../assets/style/common";
 
 export default React.createClass({
     render(){
@@ -36,11 +37,11 @@ export default React.createClass({
                 showHideTransition={'fade'}
                 //networkActivityIndicatorVisible={true}
             />
-            <View style={styles.shadow}></View>
+            <View style={styles.shadow} />
             {/*导航头*/}
             <View style={styles.header}>
                 <Text style={styles.headerTxt}>更多</Text>
-                <Image source={require('../assets/img/icon_homepage_message.png')} style={styles.headerImg}></Image>
+                <Image source={require('../assets/img/icon_homepage_message.png')} style={styles.headerImg} />
             </View>
             <ScrollView>
                 {/*横条组件组成的主要内容*/}
@@ -80,18 +81,19 @@ const styles = StyleSheet.create({
         height:StatusBar.currentHeight
     },
     header:{
-        height:60,
+        height:60 + style.marginTop,
         backgroundColor:'#FF6100',
         flexDirection:'row',
         alignItems: 'center',
         justifyContent:'center',
+        paddingTop: style.marginTop
     },
     headerImg:{
         height:24,
         width:24,
         position:'absolute',
         right:10,
-        top:18
+        top:18 + style.marginTop
     },
     headerTxt:{
         fontSize:20,

@@ -47,7 +47,7 @@ export default class wei extends Component {
     render() {
         return (
             <Navigator
-                initialRoute={{name: 'firstcome', component: FirstCome}}
+                initialRoute={{name: 'firstcome', component: TabNav}}
                 renderScene={(route, navigator) => {
                     let Component = route.component;
                     return <Component {...route.passProps} navigator={navigator}/>

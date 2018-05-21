@@ -1,5 +1,5 @@
 /**
- * Created by Administrator on 2017/3/23.
+ * Created by zengwei on 2017/3/23.
  */
 import React  from 'react';
 import {
@@ -25,6 +25,7 @@ import Cooperation from './Cooperation'
 import StrongDiscount from './StrongDiscount'
 import MyComment from './MyComment'
 import MyCollection from './MyCollection'
+import style from "../assets/style/common";
 
 export default React.createClass({
     componentWillMount(){
@@ -51,16 +52,16 @@ export default React.createClass({
                     showHideTransition={'fade'}
                     //networkActivityIndicatorVisible={true}
                 />
-                <View style={styles.shadow}></View>
+                <View style={styles.shadow} />
                 {/*头部logo*/}
                 <View style={styles.header}>
                     <View style={styles.headerLeft}>
-                        <Image source={require('../assets/img/wei.png')} style={styles.logo}></Image>
+                        <Image source={require('../assets/img/wei.png')} style={styles.logo} />
                         <Text style={styles.headerLeftTxt}>威哥电商平台</Text>
-                        <Image source={require('../assets/img/avatar_vip.png')} style={styles.vip}></Image>
+                        <Image source={require('../assets/img/avatar_vip.png')} style={styles.vip} />
                     </View>
                     <View style={styles.headerRight}>
-                        <Image source={require('../assets/img/icon_cell_rightarrow.png')} style={styles.arrow}></Image>
+                        <Image source={require('../assets/img/icon_cell_rightarrow.png')} style={styles.arrow} />
                     </View>
                 </View>
                 <View style={styles.middle}>
@@ -68,14 +69,14 @@ export default React.createClass({
                         <View style={styles.middleCell}>
                             <Text style={styles.middleCellText}>100</Text>
                             <Text style={styles.middleCellText}>威哥券</Text>
-                            <View style={styles.line}></View>
+                            <View style={styles.line} />
                         </View>
                     </TouchableOpacity>
                     <TouchableOpacity onPress={this.jumpMyComment}>
                         <View style={styles.middleCell}>
                             <Text style={styles.middleCellText}>66</Text>
                             <Text style={styles.middleCellText}>评价</Text>
-                            <View style={styles.line}></View>
+                            <View style={styles.line} />
                         </View>
                     </TouchableOpacity>
                     <TouchableOpacity onPress={this.jumpMyCollection}>
@@ -86,7 +87,7 @@ export default React.createClass({
                     </TouchableOpacity>
                 </View>
                 <View>
-                    <Effect data={{title:'我的订单',text:'查看全部订单',icon:require('../assets/img/collect.png'),goComponent:MyOrder}} navigator={this.props.navigator}></Effect>
+                    <Effect data={{title:'我的订单',text:'查看全部订单',icon:require('../assets/img/collect.png'),goComponent:MyOrder}} navigator={this.props.navigator}/>
                     <View style={styles.orderContainer}>
                         {this.renderWaitOrderCell()}
                     </View>
@@ -147,7 +148,7 @@ const WaitOrderCell = React.createClass({
         return(
             <View style={[styles.orderCell,this.props.data.style]}>
                 <TouchableOpacity style={styles.orderCellWrap} onPress={this.myPress}>
-                    <Image source={this.props.data.myuri} style={styles.orderCellImage}></Image>
+                    <Image source={this.props.data.myuri} style={styles.orderCellImage} />
                     <Text style={styles.orderCellTxt}>{this.props.data.info}</Text>
                 </TouchableOpacity>
             </View>
@@ -181,6 +182,7 @@ const styles = StyleSheet.create({
         justifyContent:'space-between',
         padding:10,
         backgroundColor:'#FF6100',
+        paddingTop: 15 + style.marginTop
     },
     headerLeft:{
         flexDirection:'row',

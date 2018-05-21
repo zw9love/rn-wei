@@ -1,5 +1,5 @@
 /**
- * Created by Administrator on 2017/4/2.
+ * Created by zengwei on 2017/4/2.
  */
 import React  from 'react';
 import {
@@ -65,7 +65,7 @@ export default React.createClass({
         data.map((msg,i)=>{
             arr.push(
                 <TouchableOpacity key={i} style={styles.wrapper}>
-                    <Image source={msg.src} style={styles.imgStyle}></Image>
+                    <Image source={msg.src} style={styles.imgStyle}/>
                     <Text style={styles.textStyle}>{msg.name}</Text>
                 </TouchableOpacity>
             )

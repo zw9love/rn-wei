@@ -1,5 +1,5 @@
 /**
- * Created by Administrator on 2017/3/23.
+ * Created by zengwei on 2017/3/23.
  */
 import React  from 'react';
 import {
@@ -19,6 +19,7 @@ import {
 let {width, height} = Dimensions.get('window');
 
 import Message from './Message'
+import style from "../assets/style/common";
 
 export default React.createClass({
     render(){
@@ -35,14 +36,14 @@ export default React.createClass({
                     showHideTransition={'fade'}
                     //networkActivityIndicatorVisible={true}
                 />
-                <View style={styles.shadow}></View>
+                <View style={styles.shadow} />
                 <View style={styles.header}>
                     <TouchableOpacity onPress={this.jumpMessage} style={styles.headerImgLeft}>
-                        <Image source={require('../assets/img/icon_homepage_message.png')} style={styles.headerImg}></Image>
+                        <Image source={require('../assets/img/icon_homepage_message.png')} style={styles.headerImg}/>
                     </TouchableOpacity>
                     <Text style={styles.headerTxt}>商家</Text>
                     <TouchableOpacity style={styles.headerImgRight}>
-                        <Image source={require('../assets/img/icon_homepage_search.png')} style={styles.headerImg}></Image>
+                        <Image source={require('../assets/img/icon_homepage_search.png')} style={styles.headerImg} />
                     </TouchableOpacity>
                 </View>
                 {
@@ -158,11 +159,12 @@ const styles = StyleSheet.create({
         height:StatusBar.currentHeight
     },
     header:{
-        height:60,
+        height:60 + style.marginTop,
         backgroundColor:'#FF6100',
         flexDirection:'row',
         alignItems: 'center',
         justifyContent:'center',
+        paddingTop: style.marginTop
     },
     headerImg:{
         width:24,
@@ -171,12 +173,12 @@ const styles = StyleSheet.create({
     headerImgLeft:{
         left:10,
         position:'absolute',
-        top:18
+        top:18 + style.marginTop
     },
     headerImgRight:{
         right:10,
         position:'absolute',
-        top:18
+        top:18 + style.marginTop
     },
     headerTxt:{
         fontSize:20,

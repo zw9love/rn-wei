@@ -1,5 +1,5 @@
 /**
- * Created by Administrator on 2017/4/1.
+ * Created by zengwei on 2017/4/1.
  */
 import React  from 'react';
 import {
@@ -36,7 +36,7 @@ export default React.createClass({
                                 </View>
                                 <TouchableOpacity style={styles.content}>
                                     <View style={styles.imageWrap}>
-                                        <Image source={require('../assets/img/jiaozi.png')} style={styles.image}></Image>
+                                        <Image source={require('../assets/img/jiaozi.png')} style={styles.image}/>
                                     </View>
                                     <View style={styles.infoWrap}>
                                         <Text style={styles.infoTxtTop} numberOfLines={1}>下单时间: {this.props.data.time}</Text>

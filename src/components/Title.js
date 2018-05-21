@@ -1,5 +1,5 @@
 /**
- * Created by Administrator on 2017/3/29.
+ * Created by zengwei on 2017/3/29.
  */
 import React  from 'react';
 import {
@@ -11,6 +11,7 @@ import {
     StatusBar,
     Dimensions
 } from 'react-native';
+import style from "../assets/style/common";
 
 // let {width,height,scale} = Dimensions.get('window');
 
@@ -31,7 +32,7 @@ export default React.createClass({
                 //networkActivityIndicatorVisible={true}
                 />
                 {
-                    this.props.data.statuActive ?  null : <View style={styles.shadow}></View>
+                    this.props.data.statuActive ?  null : <View style={styles.shadow}/>
                 }
                 <View style={[styles.header,headerBackground]}>
                     <TouchableOpacity style={styles.headerLeft} onPress={this.back}>
@@ -60,20 +61,22 @@ const styles = StyleSheet.create({
         height:StatusBar.currentHeight
     },
     header:{
-        height: 60,
+        height: 60 + style.marginTop,
         flexDirection:'row',
         alignItems: 'center',
         justifyContent: 'center',
         backgroundColor: '#FF6100',
         borderBottomColor:'#e8e8e8',
-        borderBottomWidth:1
+        borderBottomWidth:1,
+        paddingTop: style.marginTop,
     },
     headerLeft:{
-        height:60,
+        height:60 + style.marginTop,
         flexDirection:'row',
         alignItems: 'center',
         position:'absolute',
         left:10,
+        paddingTop: style.marginTop,
     },
     headerBack:{
         width:10,
@@ -86,7 +89,8 @@ const styles = StyleSheet.create({
     },
     headerTitle:{
         color:'#fff',
-        fontSize:18
+        fontSize:18,
+
     },
     headerEditWrap:{
         height:60,

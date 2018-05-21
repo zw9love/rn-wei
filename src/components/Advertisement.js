@@ -1,5 +1,5 @@
 /**
- * Created by Administrator on 2017/3/26.
+ * Created by zengwei on 2017/3/26.
  */
 import React from 'react';
 import {
@@ -25,7 +25,7 @@ export default React.createClass({
                 </View>
                 {/*右边的*/}
                 <View style={styles.rightWrap}>
-                    <Image source={src} style={styles.image}></Image>
+                    <Image source={src} style={styles.image}/>
                 </View>
             </View>
         </TouchableOpacity>

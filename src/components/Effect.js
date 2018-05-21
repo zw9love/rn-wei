@@ -1,5 +1,5 @@
 /**
- * Created by Administrator on 2017/3/25.
+ * Created by zengwei on 2017/3/25.
  */
 import React  from 'react';
 import {
@@ -41,7 +41,7 @@ export default React.createClass({
         if(hasIcon){
             return (
                 <View style={styles.leftContainer}>
-                    <Image style={styles.icon} source={hasIcon}></Image>
+                    <Image style={styles.icon} source={hasIcon}/>
                     <Text style={[styles.text,{marginLeft:10}]} >{this.props.data.title}</Text>
                 </View>
             )
@@ -58,8 +58,8 @@ export default React.createClass({
         else if(hasImage){
             return (
                 <View style={styles.rightContainer}>
-                    <Image style={styles.specialImg} source={hasImage} ></Image>
-                    <Image style={styles.img} source={require('../assets/img/icon_cell_rightarrow.png')}></Image>
+                    <Image style={styles.specialImg} source={hasImage} />
+                    <Image style={styles.img} source={require('../assets/img/icon_cell_rightarrow.png')}/>
                 </View>
             )
         }
@@ -67,7 +67,7 @@ export default React.createClass({
             return (
                 <View style={styles.rightContainer}>
                     <Text style={styles.specialText}>{this.props.data.text}</Text>
-                    <Image style={styles.img} source={require('../assets/img/icon_cell_rightarrow.png')}></Image>
+                    <Image style={styles.img} source={require('../assets/img/icon_cell_rightarrow.png')}/>
                 </View>
             )
         }

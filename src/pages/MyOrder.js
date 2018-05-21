@@ -1,5 +1,5 @@
 /**
- * Created by Administrator on 2017/4/1.
+ * Created by zengwei on 2017/4/1.
  */
 import React  from 'react';
 import {
@@ -40,7 +40,7 @@ export default React.createClass({
             <View style={styles.container}>
                 <Title data={{name:'我的订单',editInfo:this.state.editInfo,myEdit:this.myEdit}} navigator={this.props.navigator} />
                 <View style={styles.category}>
-                    <View style={styles.categoryLine}></View>
+                    <View style={styles.categoryLine}/>
                     {this.renderCategory()}
                 </View>
                 <ScrollView

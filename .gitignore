@@ -41,6 +41,8 @@ yarn-error.log
 buck-out/
 \.buckd/
 *.keystore
+yarn.lock
+package-lock.json
 
 # fastlane
 #
@@ -52,3 +54,5 @@ buck-out/
 fastlane/report.xml
 fastlane/Preview.html
 fastlane/screenshots
+
+bundle/
