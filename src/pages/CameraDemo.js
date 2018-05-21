@@ -10,11 +10,10 @@ import {
     View,
     StatusBar
 } from 'react-native';
-// import BarcodeScanner from 'react-native-barcodescanner';
-
+import BarcodeScanner from 'react-native-barcodescanner';
 import Title from '../components/Title'
 import ScanRes from './ScanRes'
-
+// include ':app'
 class BarcodeScannerApp extends Component {
     constructor(props) {
         super(props);
@@ -53,12 +52,12 @@ class BarcodeScannerApp extends Component {
         return (
             <View style={styles.container}>
                 <Title navigator={this.props.navigator} data={{name:'返回',statuActive:true,backgroundStyle:{backgroundColor:'rgba(0,0,0,0.7)'}}}/>
-                {/*<BarcodeScanner*/}
-                    {/*onBarCodeRead={this.barcodeReceived.bind(this)}*/}
-                    {/*style={{ flex: 1}}*/}
-                    {/*torchMode={this.state.torchMode}*/}
-                    {/*cameraType={this.state.cameraType}*/}
-                {/*/>*/}
+                <BarcodeScanner
+                    onBarCodeRead={this.barcodeReceived.bind(this)}
+                    style={{ flex: 1}}
+                    torchMode={this.state.torchMode}
+                    cameraType={this.state.cameraType}
+                />
                 <View style={styles.statusBar}>
                     <Text style={styles.statusBarText}>{this.state.text}</Text>
                 </View>

@@ -1,7 +1,7 @@
 /**
  * Created by zengwei on 2017/4/1.
  */
-import React  from 'react';
+import React from 'react';
 import {
     StyleSheet,
     Text,
@@ -21,11 +21,11 @@ let {width, height} = Dimensions.get('window');
 import Title from '../components/Title'
 
 export default React.createClass({
-    render(){
-        let special = this.state.refreshSuccess ? {opacity:1} : {opacity:0};
-        return(
+    render() {
+        let special = this.state.refreshSuccess ? {opacity: 1} : {opacity: 0};
+        return (
             <View style={styles.container}>
-                <Title navigator={this.props.navigator} data={{name:this.props.title}}/>
+                <Title navigator={this.props.navigator} data={{name: this.props.title}}/>
                 {
                     this.state.refreshSuccess ? null :
                         (
@@ -45,7 +45,7 @@ export default React.createClass({
                         <WebView
                             //ref={WEBVIEW_REF}
                             automaticallyAdjustContentInsets={false}
-                            style={[styles.webView,special]}
+                            style={[styles.webView, special]}
                             source={{uri: this.state.url}}
                             bounces={true}
                             javaScriptEnabled={true}
@@ -55,69 +55,72 @@ export default React.createClass({
                             //onShouldStartLoadWithRequest={this.onShouldStartLoadWithRequest}
                             startInLoadingState={true}
                             scalesPageToFit={this.state.scalesPageToFit}
-                            renderLoading={()=>{
-                        //不稳定renderLoading
-                        return (
-                            <View style={styles.refreshWrap}>
-                                <Image source={require('../assets/img/lufei.jpeg')} style={styles.refreshImage}/>
-                                <View style={styles.refreshTxtWrap}>
-                                    <ActivityIndicator
-                                        animating={true}
-                                        style={styles.activityIndicator}
-                                        size="large"
-                                        color='#FF6100'
-                                    />
-                                    <Text style={styles.refreshTxt}>正在刷新，请等待</Text>
-                                </View>
-                            </View>
-                        )
-                    }}
-                            renderError={()=>{
-                        //自定义了一个渲染的错误的视图，不太好使
-                        /*return(
-                           <View style={styles.refreshWrap}>
-                                <Image source={require('../../assets/img/lufei.jpeg')} style={styles.refreshImage}/>
-                                <View style={styles.refreshTxtWrap}>
-                                    <Text style={styles.refreshTxt}>您的页面挂了，请检查网络和域名</Text>
-                                </View>
-                           </View>
-                        )*/
-                    }}
-                            onLoad={()=>{
-                        //alert('加载成功');
-                        /*this.setState({
-                            refreshComplete:true,
-                            refreshSuccess:true
-                        })*/
-                    }}
-                            onError={(error)=>{
-                        //console.log(error)
-                        //alert('加载失败');
-                        this.setState({
-                            refreshSuccess:false,
-                        })
-                    }}
+                            renderLoading={() => {
+                                //不稳定renderLoading
+                                return (
+                                    <View style={styles.refreshWrap}>
+                                        <Image source={require('../assets/img/lufei.jpeg')}
+                                               style={styles.refreshImage}/>
+                                        <View style={styles.refreshTxtWrap}>
+                                            <ActivityIndicator
+                                                animating={true}
+                                                style={styles.activityIndicator}
+                                                size="large"
+                                                color='#FF6100'
+                                            />
+                                            <Text style={styles.refreshTxt}>正在刷新，请等待</Text>
+                                        </View>
+                                    </View>
+                                )
+                            }}
+                            renderError={() => {
+                                //自定义了一个渲染的错误的视图，不太好使
+                                /*return(
+                                   <View style={styles.refreshWrap}>
+                                        <Image source={require('../../assets/img/lufei.jpeg')} style={styles.refreshImage}/>
+                                        <View style={styles.refreshTxtWrap}>
+                                            <Text style={styles.refreshTxt}>您的页面挂了，请检查网络和域名</Text>
+                                        </View>
+                                   </View>
+                                )*/
+                            }}
+                            onLoad={() => {
+                                //alert('加载成功');
+                                /*this.setState({
+                                    refreshComplete:true,
+                                    refreshSuccess:true
+                                })*/
+                            }}
+                            onError={(error) => {
+                                //console.log(error)
+                                //alert('加载失败');
+                                this.setState({
+                                    refreshSuccess: false,
+                                })
+                            }}
                         />
-                        :null
+                        : null
 
                 }
 
             </View>
         )
     },
-    getInitialState(){
-        return{
-            url:this.props.url,
-            refreshComplete:false,
-            refreshError:false,
-            refreshSuccess:true,
-            refreshMsg:'正在刷新，请等待'
+    getInitialState() {
+        return {
+            url: this.props.url,
+            refreshComplete: false,
+            refreshError: false,
+            refreshSuccess: true,
+            refreshMsg: '正在刷新，请等待'
         }
     },
-    myRefresh(){
-        this.setState({refreshSuccess:true});
+    myRefresh() {
+        this.setState({refreshSuccess: true});
     }
 })
+
+let statusHeight = StatusBar.currentHeight ? StatusBar.currentHeight : 0
 
 const styles = StyleSheet.create({
     container: {
@@ -125,40 +128,40 @@ const styles = StyleSheet.create({
         // flexDirection:'row',
         // justifyContent: 'center',
         // alignItems: 'center',
-        backgroundColor:'#fff',
+        backgroundColor: '#fff',
     },
-    refreshWrap:{
+    refreshWrap: {
         flex: 1,
         // width:width,
         //height:(height-60-StatusBar.currentHeight),
         // justifyContent: 'center',
         // alignItems: 'center',
     },
-    refreshImage:{
-        height:(height-60-StatusBar.currentHeight),
+    refreshImage: {
+        height: (height - 60 - statusHeight),
         //resizeMode:Image.resizeMode.stretch,
-        width:width,
+        width: width,
         // height:height-120,
     },
-    refreshTxtWrap:{
+    refreshTxtWrap: {
         // flex: 1,
-        width:width,
-        height:(height-60-StatusBar.currentHeight),
-        position:'absolute',
-        left:0,
-        top:0,
+        width: width,
+        height: (height - 60 - statusHeight),
+        position: 'absolute',
+        left: 0,
+        top: 0,
         justifyContent: 'center',
         alignItems: 'center',
-        backgroundColor:'rgba(0,0,0,0.7)'
+        backgroundColor: 'rgba(0,0,0,0.7)'
     },
-    refreshTxt:{
-        color:'#FF6100',
-        fontSize:16,
-        marginTop:10
+    refreshTxt: {
+        color: '#FF6100',
+        fontSize: 16,
+        marginTop: 10
     },
-    refreshBtn:{
-        color:'#fff',
-        fontSize:16,
-        marginTop:10
+    refreshBtn: {
+        color: '#fff',
+        fontSize: 16,
+        marginTop: 10
     }
 });

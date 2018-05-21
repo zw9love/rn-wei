@@ -1,7 +1,7 @@
 /**
  * Created by zengwei on 2017/3/23.
  */
-import React  from 'react';
+import React from 'react';
 import {
     StyleSheet,
     Text,
@@ -30,11 +30,12 @@ import Message from './Message'
 import WebPage from './WebPage'
 import ClassicShow from './ClassicShow'
 import style from '../assets/style/common'
+
 let {width, height} = Dimensions.get('window');
 
 export default React.createClass({
     mixins: [TimerMixin],
-    render(){
+    render() {
         return (
             <View style={styles.container}>
                 {/*StatusBar组件*/}
@@ -47,7 +48,7 @@ export default React.createClass({
                     showHideTransition={'fade'}
                     //networkActivityIndicatorVisible={true}
                 />
-                <View style={styles.shadow} />
+                <View style={styles.shadow}/>
                 {/*头部*/}
                 <View style={styles.header}>
                     {/*<Text>Height: {StatusBar.currentHeight}</Text>*/}
@@ -80,15 +81,16 @@ export default React.createClass({
                     onScroll={this.viewScroll}
                     scrollEventThrottle={0}
                     refreshControl={
-                      <RefreshControl
-                        refreshing={this.state.isRefreshing}
-                        onRefresh={this.myRefresh}
-                        tintColor="#ff0000"
-                        title="Loading..."
-                        titleColor="#00ff00"
-                        colors={['#fff']}
-                        progressBackgroundColor="#FF6100"
-                      />
+                        <RefreshControl
+                            style={styles.refreshStyle}
+                            refreshing={this.state.isRefreshing}
+                            onRefresh={this.myRefresh}
+                            tintColor="#FF6100"
+                            title="Loading..."
+                            titleColor="#FF6100"
+                            colors={['#fff']}
+                            progressBackgroundColor="#FF6100"
+                        />
                     }
                 >
                     {/*轮播*/}
@@ -119,75 +121,265 @@ export default React.createClass({
                         </TouchableOpacity>
                         {/*名店右边*/}
                         <View style={styles.storeRight}>
-                            <Advertisement data={{title:'天天特价',info:'优惠不打烊',style:{color:'#FF6100'},
-                            data:[
-                                {url:require('../assets/img/eat3.png'),title:'炭牛韩国烤肉3',info:'[价值343元]套餐2选1，提供免费WiFi提供免费WiFi提供免费WiFi',price:178,money:153,distance:1881.1},
-                                {url:require('../assets/img/eat4.png'),title:'炭牛韩国烤肉4',info:'[价值343元]套餐2选1，提供免费WiFi提供免费WiFi提供免费WiFi',price:98,money:88,distance:1866.1},
-                                {url:require('../assets/img/eat5.png'),title:'炭牛韩国烤肉5',info:'[价值343元]套餐2选1，提供免费WiFi提供免费WiFi提供免费WiFi',price:98,money:88,distance:1866.1},
-                                {url:require('../assets/img/eat6.png'),title:'炭牛韩国烤肉6',info:'[价值343元]套餐2选1，提供免费WiFi提供免费WiFi提供免费WiFi',price:98,money:88,distance:1866.1},
-                            ]
-                            ,src:require('../assets/img/tttj.png')}} navigator={this.props.navigator}/>
-                            <Advertisement data={{title:'一元吃',info:'一元吃美食',style:{color:'red'},
-                            data:[
-                                {url:require('../assets/img/eat7.png'),title:'炭牛韩国烤肉7',info:'[价值343元]套餐2选1，提供免费WiFi提供免费WiFi提供免费WiFi',price:178,money:153,distance:1881.1},
-                                {url:require('../assets/img/eat2.png'),title:'炭牛韩国烤肉2',info:'[价值343元]套餐2选1，提供免费WiFi提供免费WiFi提供免费WiFi',price:98,money:88,distance:1866.1},
-                                {url:require('../assets/img/eat4.png'),title:'炭牛韩国烤肉4',info:'[价值343元]套餐2选1，提供免费WiFi提供免费WiFi提供免费WiFi',price:98,money:88,distance:1866.1},
-                                {url:require('../assets/img/eat6.png'),title:'炭牛韩国烤肉6',info:'[价值343元]套餐2选1，提供免费WiFi提供免费WiFi提供免费WiFi',price:98,money:88,distance:1866.1},
-                            ],src:require('../assets/img/yyms.png')}} navigator={this.props.navigator}/>
+                            <Advertisement data={{
+                                title: '天天特价', info: '优惠不打烊', style: {color: '#FF6100'},
+                                data: [
+                                    {
+                                        url: require('../assets/img/eat3.png'),
+                                        title: '炭牛韩国烤肉3',
+                                        info: '[价值343元]套餐2选1，提供免费WiFi提供免费WiFi提供免费WiFi',
+                                        price: 178,
+                                        money: 153,
+                                        distance: 1881.1
+                                    },
+                                    {
+                                        url: require('../assets/img/eat4.png'),
+                                        title: '炭牛韩国烤肉4',
+                                        info: '[价值343元]套餐2选1，提供免费WiFi提供免费WiFi提供免费WiFi',
+                                        price: 98,
+                                        money: 88,
+                                        distance: 1866.1
+                                    },
+                                    {
+                                        url: require('../assets/img/eat5.png'),
+                                        title: '炭牛韩国烤肉5',
+                                        info: '[价值343元]套餐2选1，提供免费WiFi提供免费WiFi提供免费WiFi',
+                                        price: 98,
+                                        money: 88,
+                                        distance: 1866.1
+                                    },
+                                    {
+                                        url: require('../assets/img/eat6.png'),
+                                        title: '炭牛韩国烤肉6',
+                                        info: '[价值343元]套餐2选1，提供免费WiFi提供免费WiFi提供免费WiFi',
+                                        price: 98,
+                                        money: 88,
+                                        distance: 1866.1
+                                    },
+                                ]
+                                , src: require('../assets/img/tttj.png')
+                            }} navigator={this.props.navigator}/>
+                            <Advertisement data={{
+                                title: '一元吃', info: '一元吃美食', style: {color: 'red'},
+                                data: [
+                                    {
+                                        url: require('../assets/img/eat7.png'),
+                                        title: '炭牛韩国烤肉7',
+                                        info: '[价值343元]套餐2选1，提供免费WiFi提供免费WiFi提供免费WiFi',
+                                        price: 178,
+                                        money: 153,
+                                        distance: 1881.1
+                                    },
+                                    {
+                                        url: require('../assets/img/eat2.png'),
+                                        title: '炭牛韩国烤肉2',
+                                        info: '[价值343元]套餐2选1，提供免费WiFi提供免费WiFi提供免费WiFi',
+                                        price: 98,
+                                        money: 88,
+                                        distance: 1866.1
+                                    },
+                                    {
+                                        url: require('../assets/img/eat4.png'),
+                                        title: '炭牛韩国烤肉4',
+                                        info: '[价值343元]套餐2选1，提供免费WiFi提供免费WiFi提供免费WiFi',
+                                        price: 98,
+                                        money: 88,
+                                        distance: 1866.1
+                                    },
+                                    {
+                                        url: require('../assets/img/eat6.png'),
+                                        title: '炭牛韩国烤肉6',
+                                        info: '[价值343元]套餐2选1，提供免费WiFi提供免费WiFi提供免费WiFi',
+                                        price: 98,
+                                        money: 88,
+                                        distance: 1866.1
+                                    },
+                                ], src: require('../assets/img/yyms.png')
+                            }} navigator={this.props.navigator}/>
                         </View>
                     </View>
                     {/*单独广告这里*/}
                     <View style={styles.bigAdver}>
-                        <Advertisement data={{title:'最高立减25',info:'报名威哥 新学员专享',style:{color:'#FB7F66'},
-                            data:[
-                                {url:require('../assets/img/eat3.png'),title:'炭牛韩国烤肉3',info:'[价值343元]套餐2选1，提供免费WiFi提供免费WiFi提供免费WiFi',price:178,money:153,distance:1881.1},
-                                {url:require('../assets/img/eat7.png'),title:'炭牛韩国烤肉7',info:'[价值343元]套餐2选1，提供免费WiFi提供免费WiFi提供免费WiFi',price:98,money:88,distance:1866.1},
-                                {url:require('../assets/img/eat6.png'),title:'炭牛韩国烤肉6',info:'[价值343元]套餐2选1，提供免费WiFi提供免费WiFi提供免费WiFi',price:98,money:88,distance:1866.1},
-                                {url:require('../assets/img/eat5.png'),title:'炭牛韩国烤肉5',info:'[价值343元]套餐2选1，提供免费WiFi提供免费WiFi提供免费WiFi',price:98,money:88,distance:1866.1},
-                            ],src:require('../assets/img/nsj.png')}} navigator={this.props.navigator}/>
+                        <Advertisement data={{
+                            title: '最高立减25', info: '报名威哥 新学员专享', style: {color: '#FB7F66'},
+                            data: [
+                                {
+                                    url: require('../assets/img/eat3.png'),
+                                    title: '炭牛韩国烤肉3',
+                                    info: '[价值343元]套餐2选1，提供免费WiFi提供免费WiFi提供免费WiFi',
+                                    price: 178,
+                                    money: 153,
+                                    distance: 1881.1
+                                },
+                                {
+                                    url: require('../assets/img/eat7.png'),
+                                    title: '炭牛韩国烤肉7',
+                                    info: '[价值343元]套餐2选1，提供免费WiFi提供免费WiFi提供免费WiFi',
+                                    price: 98,
+                                    money: 88,
+                                    distance: 1866.1
+                                },
+                                {
+                                    url: require('../assets/img/eat6.png'),
+                                    title: '炭牛韩国烤肉6',
+                                    info: '[价值343元]套餐2选1，提供免费WiFi提供免费WiFi提供免费WiFi',
+                                    price: 98,
+                                    money: 88,
+                                    distance: 1866.1
+                                },
+                                {
+                                    url: require('../assets/img/eat5.png'),
+                                    title: '炭牛韩国烤肉5',
+                                    info: '[价值343元]套餐2选1，提供免费WiFi提供免费WiFi提供免费WiFi',
+                                    price: 98,
+                                    money: 88,
+                                    distance: 1866.1
+                                },
+                            ], src: require('../assets/img/nsj.png')
+                        }} navigator={this.props.navigator}/>
                     </View>
                     {/*4个广告这里*/}
                     <View style={styles.adverContainer}>
                         <View style={styles.adverLeft}>
-                            <Advertisement data={{title:'千万红包限时抢',info:'5折起美食畅吃',style:{color:'#FF6100'},
-                            data:[
-                                //{url:require('../../assets/img/eat1.png'),title:'炭牛韩国烤肉',info:'[价值343元]套餐2选1，提供免费WiFi提供免费WiFi提供免费WiFi',price:178,money:153,distance:1881.1},
-                                {url:require('../assets/img/eat2.png'),title:'炭牛韩国烤肉2',info:'[价值343元]套餐2选1，提供免费WiFi提供免费WiFi提供免费WiFi',price:98,money:88,distance:1866.1},
-                                {url:require('../assets/img/eat3.png'),title:'炭牛韩国烤肉3',info:'[价值343元]套餐2选1，提供免费WiFi提供免费WiFi提供免费WiFi',price:98,money:88,distance:1866.1},
-                            ]
+                            <Advertisement data={{
+                                title: '千万红包限时抢', info: '5折起美食畅吃', style: {color: '#FF6100'},
+                                data: [
+                                    //{url:require('../../assets/img/eat1.png'),title:'炭牛韩国烤肉',info:'[价值343元]套餐2选1，提供免费WiFi提供免费WiFi提供免费WiFi',price:178,money:153,distance:1881.1},
+                                    {
+                                        url: require('../assets/img/eat2.png'),
+                                        title: '炭牛韩国烤肉2',
+                                        info: '[价值343元]套餐2选1，提供免费WiFi提供免费WiFi提供免费WiFi',
+                                        price: 98,
+                                        money: 88,
+                                        distance: 1866.1
+                                    },
+                                    {
+                                        url: require('../assets/img/eat3.png'),
+                                        title: '炭牛韩国烤肉3',
+                                        info: '[价值343元]套餐2选1，提供免费WiFi提供免费WiFi提供免费WiFi',
+                                        price: 98,
+                                        money: 88,
+                                        distance: 1866.1
+                                    },
+                                ]
                             }} navigator={this.props.navigator}/>
-                            <Advertisement data={{title:'鲜花1折起',info:'撩妹更easy',style:{color:'#41A041'},
-                            data:[
-                                {url:require('../assets/img/eat4.png'),title:'炭牛韩国烤肉4',info:'[价值343元]套餐2选1，提供免费WiFi提供免费WiFi提供免费WiFi',price:178,money:153,distance:1881.1},
-                                {url:require('../assets/img/eat5.png'),title:'炭牛韩国烤肉5',info:'[价值343元]套餐2选1，提供免费WiFi提供免费WiFi提供免费WiFi',price:98,money:88,distance:1866.1},
-                                {url:require('../assets/img/eat6.png'),title:'炭牛韩国烤肉6',info:'[价值343元]套餐2选1，提供免费WiFi提供免费WiFi提供免费WiFi',price:98,money:88,distance:1866.1},
-                                {url:require('../assets/img/eat7.png'),title:'炭牛韩国烤肉7',info:'[价值343元]套餐2选1，提供免费WiFi提供免费WiFi提供免费WiFi',price:98,money:88,distance:1866.1},
-                            ]
+                            <Advertisement data={{
+                                title: '鲜花1折起', info: '撩妹更easy', style: {color: '#41A041'},
+                                data: [
+                                    {
+                                        url: require('../assets/img/eat4.png'),
+                                        title: '炭牛韩国烤肉4',
+                                        info: '[价值343元]套餐2选1，提供免费WiFi提供免费WiFi提供免费WiFi',
+                                        price: 178,
+                                        money: 153,
+                                        distance: 1881.1
+                                    },
+                                    {
+                                        url: require('../assets/img/eat5.png'),
+                                        title: '炭牛韩国烤肉5',
+                                        info: '[价值343元]套餐2选1，提供免费WiFi提供免费WiFi提供免费WiFi',
+                                        price: 98,
+                                        money: 88,
+                                        distance: 1866.1
+                                    },
+                                    {
+                                        url: require('../assets/img/eat6.png'),
+                                        title: '炭牛韩国烤肉6',
+                                        info: '[价值343元]套餐2选1，提供免费WiFi提供免费WiFi提供免费WiFi',
+                                        price: 98,
+                                        money: 88,
+                                        distance: 1866.1
+                                    },
+                                    {
+                                        url: require('../assets/img/eat7.png'),
+                                        title: '炭牛韩国烤肉7',
+                                        info: '[价值343元]套餐2选1，提供免费WiFi提供免费WiFi提供免费WiFi',
+                                        price: 98,
+                                        money: 88,
+                                        distance: 1866.1
+                                    },
+                                ]
                             }} navigator={this.props.navigator}/>
                         </View>
                         {/*名店右边*/}
                         <View style={styles.adverRight}>
-                            <Advertisement data={{title:'踏青好去处',info:'优惠游周边',style:{color:'#FFC0CB'},
-                            data:[
-                                {url:require('../assets/img/eat2.png'),title:'炭牛韩国烤肉2',info:'[价值343元]套餐2选1，提供免费WiFi提供免费WiFi提供免费WiFi',price:178,money:153,distance:1881.1},
-                                {url:require('../assets/img/eat5.png'),title:'炭牛韩国烤肉5',info:'[价值343元]套餐2选1，提供免费WiFi提供免费WiFi提供免费WiFi',price:98,money:88,distance:1866.1},
-                                {url:require('../assets/img/eat1.png'),title:'炭牛韩国烤肉1',info:'[价值343元]套餐2选1，提供免费WiFi提供免费WiFi提供免费WiFi',price:98,money:88,distance:1866.1},
-                                {url:require('../assets/img/eat4.png'),title:'炭牛韩国烤肉4',info:'[价值343元]套餐2选1，提供免费WiFi提供免费WiFi提供免费WiFi',price:98,money:88,distance:1866.1},
-                            ]
+                            <Advertisement data={{
+                                title: '踏青好去处', info: '优惠游周边', style: {color: '#FFC0CB'},
+                                data: [
+                                    {
+                                        url: require('../assets/img/eat2.png'),
+                                        title: '炭牛韩国烤肉2',
+                                        info: '[价值343元]套餐2选1，提供免费WiFi提供免费WiFi提供免费WiFi',
+                                        price: 178,
+                                        money: 153,
+                                        distance: 1881.1
+                                    },
+                                    {
+                                        url: require('../assets/img/eat5.png'),
+                                        title: '炭牛韩国烤肉5',
+                                        info: '[价值343元]套餐2选1，提供免费WiFi提供免费WiFi提供免费WiFi',
+                                        price: 98,
+                                        money: 88,
+                                        distance: 1866.1
+                                    },
+                                    {
+                                        url: require('../assets/img/eat1.png'),
+                                        title: '炭牛韩国烤肉1',
+                                        info: '[价值343元]套餐2选1，提供免费WiFi提供免费WiFi提供免费WiFi',
+                                        price: 98,
+                                        money: 88,
+                                        distance: 1866.1
+                                    },
+                                    {
+                                        url: require('../assets/img/eat4.png'),
+                                        title: '炭牛韩国烤肉4',
+                                        info: '[价值343元]套餐2选1，提供免费WiFi提供免费WiFi提供免费WiFi',
+                                        price: 98,
+                                        money: 88,
+                                        distance: 1866.1
+                                    },
+                                ]
                             }} navigator={this.props.navigator}/>
-                            <Advertisement data={{title:'踏青季特惠',info:'春游装备1元购',style:{color:'#800280'},
-                            data:[
-                                {url:require('../assets/img/eat4.png'),title:'炭牛韩国烤肉4',info:'[价值343元]套餐2选1，提供免费WiFi提供免费WiFi提供免费WiFi',price:178,money:153,distance:1881.1},
-                                {url:require('../assets/img/eat6.png'),title:'炭牛韩国烤肉6',info:'[价值343元]套餐2选1，提供免费WiFi提供免费WiFi提供免费WiFi',price:98,money:88,distance:1866.1},
-                                {url:require('../assets/img/eat7.png'),title:'炭牛韩国烤肉7',info:'[价值343元]套餐2选1，提供免费WiFi提供免费WiFi提供免费WiFi',price:98,money:88,distance:1866.1},
-                            ]
+                            <Advertisement data={{
+                                title: '踏青季特惠', info: '春游装备1元购', style: {color: '#800280'},
+                                data: [
+                                    {
+                                        url: require('../assets/img/eat4.png'),
+                                        title: '炭牛韩国烤肉4',
+                                        info: '[价值343元]套餐2选1，提供免费WiFi提供免费WiFi提供免费WiFi',
+                                        price: 178,
+                                        money: 153,
+                                        distance: 1881.1
+                                    },
+                                    {
+                                        url: require('../assets/img/eat6.png'),
+                                        title: '炭牛韩国烤肉6',
+                                        info: '[价值343元]套餐2选1，提供免费WiFi提供免费WiFi提供免费WiFi',
+                                        price: 98,
+                                        money: 88,
+                                        distance: 1866.1
+                                    },
+                                    {
+                                        url: require('../assets/img/eat7.png'),
+                                        title: '炭牛韩国烤肉7',
+                                        info: '[价值343元]套餐2选1，提供免费WiFi提供免费WiFi提供免费WiFi',
+                                        price: 98,
+                                        money: 88,
+                                        distance: 1866.1
+                                    },
+                                ]
                             }} navigator={this.props.navigator}/>
                         </View>
                     </View>
                     {/*购物中心*/}
                     <View style={styles.shopContainer}>
                         <Effect
-                            data={{title:'购物中心',text:'全部4家',icon:require('../assets/img/gwzx.png'),goComponent:ClassicShow}}
+                            data={{
+                                title: '购物中心',
+                                text: '全部4家',
+                                icon: require('../assets/img/gwzx.png'),
+                                goComponent: ClassicShow
+                            }}
                             navigator={this.props.navigator}/>
                         <ScrollView
                             horizontal={true}
@@ -200,7 +392,12 @@ export default React.createClass({
                     {/*热门频道*/}
                     <View style={styles.hotContainer}>
                         <Effect
-                            data={{title:'热门频道',text:'查看全部',icon:require('../assets/img/rm.png'),goComponent:ClassicShow}}
+                            data={{
+                                title: '热门频道',
+                                text: '查看全部',
+                                icon: require('../assets/img/rm.png'),
+                                goComponent: ClassicShow
+                            }}
                             navigator={this.props.navigator}/>
 
                         <View style={styles.hotWrap}>
@@ -215,19 +412,19 @@ export default React.createClass({
                     {/*猜你喜欢*/}
                     <View style={styles.likeContainer}>
                         <Effect
-                            data={{title:'猜你喜欢',icon:require('../assets/img/cnxh.png'),goComponent:ClassicShow}}
+                            data={{title: '猜你喜欢', icon: require('../assets/img/cnxh.png'), goComponent: ClassicShow}}
                             navigator={this.props.navigator}/>
                         {this.renderLove()}
                     </View>
                     {/*查看全部*/}
                     {
                         this.state.showButton ? (
-                                <TouchableOpacity onPress={this.lookMore}>
-                                    <View style={styles.lookAllWrap}>
-                                        <Text style={styles.lookAllTxt}>查看全部商品</Text>
-                                    </View>
-                                </TouchableOpacity>
-                            ) : null
+                            <TouchableOpacity onPress={this.lookMore}>
+                                <View style={styles.lookAllWrap}>
+                                    <Text style={styles.lookAllTxt}>查看全部商品</Text>
+                                </View>
+                            </TouchableOpacity>
+                        ) : null
                     }
                 </ScrollView>
                 {/*回到顶部*/}
@@ -243,72 +440,73 @@ export default React.createClass({
             </View>
         )
     },
-    setCity(name){
+    setCity(name) {
         this.setState({city: name})
     },
-    setData(data){
+    setData(data) {
         this.setState({tempData: data})
     },
-    jumpStore(){
+    jumpStore() {
         this.props.navigator.push({
             component: WebPage,
             // passProps:{}  //传递过去的参数
-            passProps: {title: '名店抢购', url: 'http://i.meituan.com/topic/huilife?cevent=imt%2Fhomepage%2Fhomeguide3'}
+            // passProps: {title: '名店抢购', url: 'http://i.meituan.com/topic/huilife?cevent=imt%2Fhomepage%2Fhomeguide3'}
+            passProps: {title: '名店抢购', url: 'https://baidu.com'}
         })
     },
-    jumpMessage(){
+    jumpMessage() {
         this.props.navigator.push({
             component: Message,
             // passProps:{}  //传递过去的参数
             //passProps:{setCity:this.setCity,setData:this.setData,tempData:this.state.tempData}
         })
     },
-    jumpAddress(){
+    jumpAddress() {
         this.props.navigator.push({
             component: Address,
             // passProps:{}  //传递过去的参数
             passProps: {setCity: this.setCity, setData: this.setData, tempData: this.state.tempData}
         })
     },
-    jumpSeach(){
+    jumpSeach() {
         this.props.navigator.push({
             component: IndexSearch
         })
     },
-    jumpScan(){
+    jumpScan() {
         this.props.navigator.push({
             component: CameraDemo
         })
     },
-    jumpClassicShow(title){
+    jumpClassicShow(title) {
         this.props.navigator.push({
             component: ClassicShow,
             passProps: {title: title}
         })
     },
-    backTop(){
+    backTop() {
         this.refs.scrollView.scrollTo({x: 0, y: 0, animated: true})
         //this.refs.scrollView.scrollToEnd({animated: true})
     },
-    viewScroll(e){
+    viewScroll(e) {
         let offsetY = e.nativeEvent.contentOffset.y;
         //优化一下
-        if (offsetY < 50 && (this.state.judgeArr[0] == this.state.backTopActive)) {
-            return;
-        } else if (offsetY >= 50 && (this.state.judgeArr[1] == this.state.backTopActive)) {
-            return;
+        if (offsetY < 50 && (this.state.judgeArr[0] === this.state.backTopActive)) {
+            return
+        } else if (offsetY >= 50 && (this.state.judgeArr[1] === this.state.backTopActive)) {
+            return
         } else {
             this.setState({backTopActive: !this.state.backTopActive})
         }
         //offsetY <= 50 ? this.setState({backTopActive:false}) : this.setState({backTopActive:true})
     },
-    myRefresh(){
+    myRefresh() {
         this.setState({isRefreshing: true});
         this.setTimeout(() => {
             this.setState({isRefreshing: false});
         }, 3000)
     },
-    lookMore(){
+    lookMore() {
         if (this.lock) return;
         this.lock = true;
         this.setState({isRefreshing: true});
@@ -320,7 +518,7 @@ export default React.createClass({
             });
         }, 3000)
     },
-    renderLove(){
+    renderLove() {
         let data = this.state.data;
         let arr = [];
         data.map((msg, i) => {
@@ -331,7 +529,7 @@ export default React.createClass({
         return arr;
 
     },
-    renderHotTop(){
+    renderHotTop() {
         let data = [
             {url: require('../assets/img/hot_play.png'), title: '演出赛事', info: '精彩不容错过'},
             {url: require('../assets/img/hot_car.png'), title: '汽车服务', info: '汽车打蜡特惠'}
@@ -342,7 +540,7 @@ export default React.createClass({
         })
         return arr;
     },
-    renderHotBottom(){
+    renderHotBottom() {
         let data = [
             {url: require('../assets/img/hot_air.png'), title: '订机票', info: '一折票马上抢'},
             {url: require('../assets/img/hot_water.png'), title: '温泉', info: '品质暖冬专享'},
@@ -355,7 +553,7 @@ export default React.createClass({
         })
         return arr;
     },
-    renderShopMainCell(){
+    renderShopMainCell() {
         let data = [
             {url: require('../assets/img/kd.png'), info: '22家优惠', name: '凯德广场-云尚'},
             {url: require('../assets/img/lyl.png'), info: '111家优惠', name: '来又来广场'},
@@ -371,18 +569,18 @@ export default React.createClass({
 
         return arr;
     },
-    renderCircle(){
+    renderCircle() {
         let arr = [];
         let specialStyle = {};
         for (let i = 0; i < 2; i++) {
-            specialStyle = this.state.index == i ? {backgroundColor: '#FF6100'} : {backgroundColor: '#ccc'};
+            specialStyle = this.state.index === i ? {backgroundColor: '#FF6100'} : {backgroundColor: '#ccc'};
             arr.push(
-                <View key={i} style={[styles.circel,specialStyle]}/>
+                <View key={i} style={[styles.circel, specialStyle]}/>
             )
         }
         return arr;
     },
-    renderCarousel(){
+    renderCarousel() {
         let data = [
             [
                 {src: require('../assets/img/zlam.png'), name: '足疗按摩'},
@@ -413,7 +611,9 @@ export default React.createClass({
                         data[i].map(function (msg, index) {
                             return (
                                 <TouchableOpacity key={index} style={styles.carouselCellWrap}
-                                                  onPress={()=>{self.jumpClassicShow(msg.name)}}>
+                                                  onPress={() => {
+                                                      self.jumpClassicShow(msg.name)
+                                                  }}>
                                     <Image source={msg.src} style={styles.carouselCellImg}/>
                                     <Text style={styles.carouselCellTxt}>{msg.name}</Text>
                                 </TouchableOpacity>
@@ -425,7 +625,7 @@ export default React.createClass({
         }
         return arr;
     },
-    getInitialState(){
+    getInitialState() {
         return {
             tempData: null,
             city: '北京',
@@ -583,7 +783,7 @@ export default React.createClass({
             ]
         }
     },
-    componentDidMount(){
+    componentDidMount() {
         //设定标识符为false
         this.lock = false;
         // fetch('http://www.z1995.com/data.json').then((response) => response.json())
@@ -596,7 +796,7 @@ export default React.createClass({
         // });
         // console.log("ifIphoneX = " + ifIphoneX())
     },
-    changeIndex(e){
+    changeIndex(e) {
         //水平的偏移量
         let offsetX = e.nativeEvent.contentOffset.x;
         //求出当前的page
@@ -655,6 +855,12 @@ const styles = StyleSheet.create({
     headerImg: {
         width: 24,
         height: 24
+    },
+    refreshStyle: {
+        backgroundColor: '#d3d3d3',
+        // position: 'absolute',
+        // left: 0,
+        // top: 0
     },
     carouselContainer: {
         height: 180,
