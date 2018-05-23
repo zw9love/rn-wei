@@ -8,7 +8,8 @@
     "dev-ios": "react-native run-ios --simulator 'iPhone X'",
     "dev-android": "react-native run-android",
     "build-ios": "react-native bundle --entry-file ./index.ios.js --bundle-output ./ios/bundle/index.ios.jsbundle --platform ios --assets-dest ./ios/bundle --dev false",
-    "build-android": "cd android && ./gradlew assembleRelease"
+    "build-android": "cd android && ./gradlew assembleRelease",
+    "android-bundle": "react-native bundle --platform android --dev false --entry-file index.android.js --bundle-output android/app/src/main/assets/index.android.bundle --assets-dest android/app/src/main/res/"
   },
   "dependencies": {
     "mockjs": "^1.0.1-beta3",

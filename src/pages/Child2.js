@@ -88,7 +88,7 @@ export default React.createClass({
                                                 size="large"
                                                 color='#FF6100'
                                             />
-                                            <Text style={styles.refreshTxt}>正在刷新，请等待</Text>
+                                            <Text style={styles.refreshTxt}>正在加载，请等待</Text>
                                         </View>
                                     </View>
                                 )
@@ -133,7 +133,7 @@ export default React.createClass({
             refreshComplete: false,
             refreshError: false,
             refreshSuccess: true,
-            refreshMsg: '正在刷新，请等待'
+            refreshMsg: '正在加载，请等待'
         }
     },
     myRefresh() {

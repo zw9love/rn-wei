@@ -19,20 +19,21 @@ import TimerMixin from 'react-timer-mixin'
 let {width, height} = Dimensions.get('window');
 
 import TabNav from './TabNav'
+import style from "../assets/style/common";
 
 export default React.createClass({
     mixins: [TimerMixin],
-    componentWillMount(){
-    //这里判不判断都行,IOS的BackAndroid为空
+    componentWillMount() {
+        //这里判不判断都行,IOS的BackAndroid为空
         if (Platform.OS === 'android') {
-             BackAndroid.addEventListener('hardwareBackPress', this.onBackAndroid);
+            BackAndroid.addEventListener('hardwareBackPress', this.onBackAndroid);
         }
         //alert(888);
     },
-    componentWillUnmount(){
+    componentWillUnmount() {
         BackAndroid.removeEventListener('hardwareBackPress', this.onBackAndroid);
     },
-    onBackAndroid(){
+    onBackAndroid() {
         //alert(666);
         // if (this.lastBackPressed && this.lastBackPressed + 2000 >= Date.now()) {
         //     //最近2秒内按过back键，可以退出应用。
@@ -43,13 +44,13 @@ export default React.createClass({
         ToastAndroid.show('就不给你退出，必须给我看广告', ToastAndroid.SHORT);
         return true;
     },
-    getInitialState(){
-        return{
-            time:5
+    getInitialState() {
+        return {
+            time: 5
         }
     },
-    render(){
-        return(
+    render() {
+        return (
             <View style={styles.container}>
                 {/*StatusBar组件*/}
                 <StatusBar
@@ -71,56 +72,57 @@ export default React.createClass({
             </View>
         )
     },
-    componentDidMount(){
+    componentDidMount() {
         this.num = this.state.time;
-        this.timer=this.setInterval(()=>{
+        this.timer = this.setInterval(() => {
             this.num--;
-            if(this.num == -1){
+            if (this.num == -1) {
                 this.clearInterval(this.timer);
                 this.props.navigator.replace({
-                    component:TabNav,
+                    component: TabNav,
                     // passProps:{}  //传递过去的参数
                     // passProps:this.props.data
                 })
-            }else{
-                this.setState({time:this.state.time - 1})
+            } else {
+                this.setState({time: this.state.time - 1})
             }
-        },1000)
+        }, 1000)
     },
-    jump(){
+    jump() {
         this.clearInterval(this.timer);
         this.props.navigator.replace({
-            component:TabNav
+            component: TabNav
         })
     }
 })
 
 const styles = StyleSheet.create({
-    container:{
-        flex:1,
+    container: {
+        flex: 1,
     },
-    image:{
-        width:width,
-        height:height,
-        // resizeMode:Image.resizeMode.contain,
+    image: {
+        width: width,
+        height: height,
+        // resizeMode: Image.resizeMode.contain,
     },
-    txtWrap:{
-        position:'absolute',
-        right:20,
-        top:20,
+    txtWrap: {
+        position: 'absolute',
+        right: 20,
+        top: 20,
         justifyContent: 'center',
         alignItems: 'center',
     },
-    adver:{
-        fontSize:14,
-        color:'#fff',
-        backgroundColor:'rgba(0,0,0,0.3)',
-        padding:6,
-        borderRadius:4
+    adver: {
+        fontSize: 14,
+        color: '#fff',
+        backgroundColor: 'rgba(0,0,0,0.3)',
+        padding: 6,
+        borderRadius: 4,
+        marginTop: style.marginTop
     },
-    restTime:{
-        fontSize:12,
-        color:'#fff',
-        marginTop:5
+    restTime: {
+        fontSize: 12,
+        color: '#fff',
+        marginTop: 5
     }
 })
