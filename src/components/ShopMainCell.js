@@ -33,7 +33,6 @@ const styles = StyleSheet.create({
     container:{
         width:width/3,
         height:120,
-        backgroundColor:'yellow',
         // borderRightWidth:1,
         // borderRightColor:'#e8e8e8',
         alignItems: 'center',
