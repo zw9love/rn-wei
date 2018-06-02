@@ -1,7 +1,7 @@
 /**
  * Created by zengwei on 2017/3/29.
  */
-import React  from 'react';
+import React from 'react';
 import {
     StyleSheet,
     Text,
@@ -16,25 +16,25 @@ import style from "../assets/style/common";
 // let {width,height,scale} = Dimensions.get('window');
 
 export default React.createClass({
-    render(){
-        let statuActive =  this.props.data.statuActive ? true : false;
+    render() {
+        let statuActive = this.props.data.statuActive ? true : false;
         let headerBackground = this.props.data.backgroundStyle ? this.props.data.backgroundStyle : null;
-        return(
+        return (
             <View>
                 {/*StatusBar组件*/}
                 <StatusBar
-                animated={false}
-                hidden={statuActive}
-                backgroundColor={'#FF6100'}
-                translucent={true}
-                //barStyle='light-content'
-                showHideTransition={'fade'}
-                //networkActivityIndicatorVisible={true}
+                    animated={false}
+                    hidden={statuActive}
+                    backgroundColor={'#FF6100'}
+                    translucent={true}
+                    //barStyle='light-content'
+                    showHideTransition={'fade'}
+                    //networkActivityIndicatorVisible={true}
                 />
                 {
-                    this.props.data.statuActive ?  null : <View style={styles.shadow}/>
+                    this.props.data.statuActive ? null : <View style={styles.shadow}/>
                 }
-                <View style={[styles.header,headerBackground]}>
+                <View style={[styles.header, headerBackground]}>
                     <TouchableOpacity style={styles.headerLeft} onPress={this.back}>
                         <Image source={require('../assets/img/navigationbar_arrow_up.png')} style={styles.headerBack}/>
                         <Text style={styles.headerLeftTxt}>{this.props.data.name}</Text>
@@ -49,57 +49,58 @@ export default React.createClass({
             </View>
         )
     },
-    back(){
+    back() {
         this.props.navigator.pop();
     },
 })
 
 
 const styles = StyleSheet.create({
-    shadow:{
+    shadow: {
         backgroundColor: '#FF6100',
-        height:StatusBar.currentHeight
+        height: StatusBar.currentHeight
     },
-    header:{
+    header: {
         height: 60 + style.marginTop,
-        flexDirection:'row',
+        flexDirection: 'row',
         alignItems: 'center',
         justifyContent: 'center',
         backgroundColor: '#FF6100',
-        borderBottomColor:'#e8e8e8',
-        borderBottomWidth:1,
+        borderBottomColor: '#e8e8e8',
+        borderBottomWidth: 1,
         paddingTop: style.marginTop,
     },
-    headerLeft:{
-        height:60 + style.marginTop,
-        flexDirection:'row',
+    headerLeft: {
+        height: 60 + style.marginTop,
+        flexDirection: 'row',
         alignItems: 'center',
-        position:'absolute',
-        left:10,
+        position: 'absolute',
+        left: 10,
         paddingTop: style.marginTop,
     },
-    headerBack:{
-        width:10,
-        height:20
+    headerBack: {
+        width: 10,
+        height: 20
     },
-    headerLeftTxt:{
-        color:'#fff',
-        fontSize:18,
-        marginLeft:15
+    headerLeftTxt: {
+        color: '#fff',
+        fontSize: 18,
+        marginLeft: 15
     },
-    headerTitle:{
-        color:'#fff',
-        fontSize:18,
+    headerTitle: {
+        color: '#fff',
+        fontSize: 18,
 
     },
-    headerEditWrap:{
-        height:60,
+    headerEditWrap: {
+        height: 60,
         justifyContent: 'center',
-        position:'absolute',
-        right:10
+        position: 'absolute',
+        right: 10,
+        paddingTop: style.marginTop
     },
-    headerEditTxt:{
-        color:'#fff',
-        fontSize:18
+    headerEditTxt: {
+        color: '#fff',
+        fontSize: 18
     }
 })
