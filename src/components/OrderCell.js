@@ -39,7 +39,7 @@ export default React.createClass({
                                         <Image source={require('../assets/img/jiaozi.png')} style={styles.image}/>
                                     </View>
                                     <View style={styles.infoWrap}>
-                                        <Text style={styles.infoTxtTop} numberOfLines={1}>下单时间: {this.props.data.time}</Text>
+                                        <Text style={styles.infoTxtTop} numberOfLines={2}>下单时间: {this.props.data.time}</Text>
                                         <Text style={styles.infoTxtBottom}>总价: ￥{this.props.data.price}</Text>
                                     </View>
                                 </TouchableOpacity>
@@ -111,9 +111,11 @@ const styles = StyleSheet.create({
         marginLeft:10,
         height:100,
         justifyContent: 'space-between',
+        flex: 1,
+        flexWrap: 'wrap',
     },
     infoTxtTop:{
-        marginTop:10
+        lineHeight: 25
     },
     infoTxtBottom:{
         marginBottom:10

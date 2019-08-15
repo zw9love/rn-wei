@@ -142,7 +142,7 @@ export default React.createClass({
                         selectedIconUri:require('../assets/img/icon_tabbar_mine_selected.png'),
                         routeName:'mine',
                         routeComponent:Child3,
-                        badge:99
+                        badge:99,
                     })
                     }
                     {this.renderTabNav

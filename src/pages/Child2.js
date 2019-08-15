@@ -113,7 +113,7 @@ export default React.createClass({
                             }}
                             onError={(error) => {
                                 //console.log(error)
-                                //alert('加载失败');
+                                alert('加载失败');
                                 this.setState({
                                     refreshSuccess: false,
                                 })
@@ -129,7 +129,8 @@ export default React.createClass({
     getInitialState() {
         return {
             // url: 'http://www.heshetrends.com/',
-            url: 'https://www.baidu.com/', // ios以后只能加载https了
+            // url: 'https://www.baidu.com/', // ios以后只能加载https了
+            url: 'https://m.hupu.com/', // ios以后只能加载https了
             refreshComplete: false,
             refreshError: false,
             refreshSuccess: true,

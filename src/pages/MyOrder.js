@@ -10,7 +10,9 @@ import {
     Image,
     ListView,
     Dimensions,
-    ScrollView
+    ScrollView,
+    Modal,
+    Alert
 } from 'react-native';
 
 let {width, height, scale} = Dimensions.get('window');
@@ -31,13 +33,32 @@ export default React.createClass({
             deleteActive: false,
             editInfo: '编辑',
             modalShow: false,
-            orderCellObj: null
+            orderCellObj: null,
+            modalVisible: false
         }
+    },
+    setModalVisible(visible) {
+        this.setState({ modalVisible: visible });
     },
     render() {
         //let scrollEnabledActive = this.state.modalShow ? false : true;
         return (
             <View style={styles.container}>
+                <Modal
+                    animationType="slide"
+                    transparent={false}
+                    visible={this.state.modalVisible}
+                    onRequestClose={() => {
+                        alert("Modal has been closed.");
+                    }}
+                >
+                    <View style={{ marginTop: 22 }}>
+                        <View>
+                            <Text>xxx</Text>
+                        </View>
+                    </View>
+                </Modal>
+
                 <Title data={{name: '我的订单', editInfo: this.state.editInfo, myEdit: this.myEdit}}
                        navigator={this.props.navigator}/>
                 <View style={styles.category}>
@@ -141,10 +162,22 @@ export default React.createClass({
         currentIndex === 1 ? this.setState({
             currentIndex: currentIndex,
             editInfo: ''
-        }) : this.setState({currentIndex: currentIndex, editInfo: '编辑'});
+        }) : this.setState({currentIndex: currentIndex, editInfo: this.state.deleteActive ? '完成' : '编辑'});
     },
     categoryPress(n) {
-        n === 1 ? this.setState({currentIndex: n, editInfo: ''}) : this.setState({currentIndex: n, editInfo: '编辑'});
+        // Alert.alert(
+        //     'Alert Title',
+        //     'My Alert Msg',
+        //     [
+        //         {text: 'Ask me later', onPress: () => console.log('Ask me later pressed')},
+        //         {text: 'Cancel', onPress: () => console.log('Cancel Pressed'), style: 'cancel'},
+        //         {text: 'OK', onPress: () => console.log('OK Pressed')},
+        //     ],
+        //     { cancelable: false }
+        // )
+        // Alert.alert('Test', 'this.state.deleteActive = ' + this.state.deleteActive)
+        // this.setModalVisible(true)
+        n === 1 ? this.setState({currentIndex: n, editInfo: ''}) : this.setState({currentIndex: n, editInfo: this.state.deleteActive ? '完成' : '编辑'});
         //this.setState({currentIndex:n});
         //获取点击小圆点所应该到达的水平位移值
         let currentX = n * width;

@@ -62,7 +62,8 @@ export default React.createClass({
                     //showHideTransition={'fade'}
                     //networkActivityIndicatorVisible={true}
                 />
-                <Image source={require('../assets/img/lufei.jpeg')} style={styles.image}/>
+                {/*<Image source={require('../assets/img/lufei.jpeg')} style={styles.image}/>*/}
+                <Image source={require('../assets/img/xjj.jpg')} style={styles.image}/>
                 <View style={styles.txtWrap}>
                     <TouchableOpacity onPress={this.jump}>
                         <Text style={styles.adver}>跳过广告</Text>
@@ -78,11 +79,11 @@ export default React.createClass({
             this.num--;
             if (this.num == -1) {
                 this.clearInterval(this.timer);
-                this.props.navigator.replace({
-                    component: TabNav,
-                    // passProps:{}  //传递过去的参数
-                    // passProps:this.props.data
-                })
+                // this.props.navigator.replace({
+                //     component: TabNav,
+                //     // passProps:{}  //传递过去的参数
+                //     // passProps:this.props.data
+                // })
             } else {
                 this.setState({time: this.state.time - 1})
             }
@@ -103,7 +104,7 @@ const styles = StyleSheet.create({
     image: {
         width: width,
         height: height,
-        // resizeMode: Image.resizeMode.contain,
+        resizeMode: Image.resizeMode.contain,
     },
     txtWrap: {
         position: 'absolute',

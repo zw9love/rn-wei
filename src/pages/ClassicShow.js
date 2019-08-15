@@ -11,7 +11,8 @@ import {
     Dimensions,
     ScrollView,
     ActivityIndicator,
-    StatusBar
+    StatusBar,
+    Image
 } from 'react-native';
 import TimerMixin from 'react-timer-mixin'
 
@@ -30,6 +31,10 @@ export default React.createClass({
     render() {
         return (
             <View style={styles.container}>
+                <Image
+                    source={require('../assets/img/xjj.jpg')}
+                    style={{position: "absolute", left: 0, top: 0,width: '100%', height: '100%'}}
+                />
                 <Title data={{name: this.props.title}} navigator={this.props.navigator}/>
                 <ScrollView>
                     {
@@ -233,7 +238,8 @@ let statusHeight = StatusBar.currentHeight ? StatusBar.currentHeight : 0
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        backgroundColor: '#e8e8e8',
+        backgroundColor: "#ffffff",
+        position: 'relative'
     },
     refreshTxtWrap: {
         // flex: 1,
